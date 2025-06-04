@@ -9,7 +9,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const handleChange = (e) => {
     setFormData({
-      ...formData, 
+      ...formData,
       [e.target.id]: e.target.value,
     });
   };
@@ -18,12 +18,12 @@ const SignUp = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch(`${baseUrl}/api/auth/sign-up`, {
+      const res = await fetch("/api/auth/sign-up", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), 
+        body: JSON.stringify(formData),
       });
       const data = await res.json();
       console.log(data);
