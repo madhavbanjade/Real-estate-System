@@ -1,5 +1,3 @@
-import cors from "cors";
-
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -25,16 +23,11 @@ app.use(express.json());
 
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: "https://gharjagga-phi.vercel.app",
-    credentials: true,
-  })
-);
-
-app.listen(3000, () => {
-  console.log("Server is running on port 3000!");
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(3000, () => {
+    console.log("Server is running on port 3000!");
+  });
+}
 
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
@@ -49,3 +42,5 @@ app.use((err, req, res, next) => {
     message,
   });
 });
+
+export default index;
