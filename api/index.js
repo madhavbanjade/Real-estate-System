@@ -5,7 +5,6 @@ import userRouter from "./router/user.router.js";
 import authRouter from "./router/auth.user.js";
 import listingRouter from "./router/listing.router.js";
 import cookieParser from "cookie-parser";
-// import path from "path";
 dotenv.config();
 
 mongoose
@@ -43,4 +42,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-export default index;
+export default app;
