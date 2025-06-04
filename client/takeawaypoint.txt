@@ -1,0 +1,46 @@
+make li pointer 
+
+redux :: 
+reduc - store
+
+
+
+adding google oauth functionality..
+
+make an oath.jsx file inside src in client and call the oath in signIn and signUp make it button with type button.
+if  the type is not a button or a submit the form as the signIn and signUp  button do .
+
+After making the oath you need to go to google firebase and register there and make a project and install the project to your client side inside the src folder and also create a .env file  to make the key secret. 
+
+after done all the process you need to go to firebase and enable the project to continue with google functionality in your signIn and signUp Pages...
+
+
+
+firebase rules :-
+ allow read;
+      allow write: if 
+      request.resource.size < 2 *1024  *1024 &&
+      request.resource.contentType.matches('image/.*')
+
+
+
+
+
+// ListingItem.js
+import React from 'react';
+
+export default function ListingItem({ listing, onDelete }) {
+  return (
+    <div className="listing-item">
+      <h2>{listing.title}</h2>
+      <p>{listing.description}</p>
+      {/* Delete button */}
+      <button 
+        onClick={() => onDelete(listing._id)} 
+        className="bg-red-500 text-white p-2 rounded hover:bg-red-700"
+      >
+        Delete
+      </button>
+    </div>
+  );
+}
