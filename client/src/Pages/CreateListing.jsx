@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { baseUrl } from "../../url.js";
 
 export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
@@ -134,7 +135,7 @@ export default function CreateListing() {
         return setError("Discount price must be less than regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/listing/create", {
+      const res = await fetch(`${baseUrl}/api/listing/create`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
