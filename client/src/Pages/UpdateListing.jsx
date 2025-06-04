@@ -36,7 +36,7 @@ export default function UpdateListing() {
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.listingId;
-      const res = await fetch(`${baseUrl}/get/${listingId}`);
+      const res = await fetch(`${baseUrl}/api/listing/get/${listingId}`);
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
@@ -145,16 +145,19 @@ export default function UpdateListing() {
         return setError("Discount price must be less then regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch(`${baseUrl}/update/${params.listingId}`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          userRef: currentUser._id,
-        }),
-      });
+      const res = await fetch(
+        `${baseUrl}/api/listing/update/${params.listingId}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            userRef: currentUser._id,
+          }),
+        }
+      );
       const data = await res.json();
       setLoading(false);
       if (data.success === false) {

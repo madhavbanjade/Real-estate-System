@@ -18,7 +18,7 @@ const SignUp = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch(`${baseUrl}/sign-up`, {
+      const res = await fetch(`${baseUrl}/api/auth/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
