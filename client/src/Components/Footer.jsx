@@ -48,17 +48,16 @@ export default function Footer() {
           <h2 className="text-lg font-bold mb-4">Contact Us</h2>
           <ul className="space-y-2">
             <li>Email: info@GharJaggaNepal.com</li>
-            <li>Phone: +977-077420111</li>
-            <li>Address: Tinkune-32, Kathmandu, Nepal</li>
+            <li>Phone: +977-00715647</li>
+            <li>Address:  Kathmandu, Nepal</li>
           </ul>
         </div>
 
-        {/* Social Media and Newsletter */}
         <div>
           <h2 className="text-lg font-bold mb-4">Follow Us</h2>
           <div className="flex space-x-4 mb-4">
             <a
-              href="https://www.facebook.com/YourProfile" // Replace with your Facebook URL
+              href="https://www.facebook.com/YourProfile" 
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer hover:text-gray-300"
@@ -66,7 +65,7 @@ export default function Footer() {
               <FaFacebook />
             </a>
             <a
-              href="https://www.instagram.com/YourProfile" // Replace with your Instagram URL
+              href="https://www.instagram.com/YourProfile" 
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer hover:text-gray-300"
@@ -74,7 +73,7 @@ export default function Footer() {
               <FaInstagram />
             </a>
             <a
-              href="https://github.com/madhavbanjade" // Replace with your GitHub URL
+              href="https://github.com/madhavbanjade" 
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer hover:text-gray-300"
@@ -82,7 +81,7 @@ export default function Footer() {
               <FaGithub />
             </a>
             <a
-              href="https://twitter.com/YourProfile" // Replace with your Twitter URL
+              href="https://twitter.com/YourProfile" 
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer hover:text-gray-300"
@@ -90,7 +89,7 @@ export default function Footer() {
               <FaTwitter />
             </a>
             <a
-              href="https://www.linkedin.com/in/YourProfile" // Replace with your LinkedIn URL
+              href="https://www.linkedin.com/in/YourProfile" 
               target="_blank"
               rel="noopener noreferrer"
               className="cursor-pointer hover:text-gray-300"
@@ -98,23 +97,9 @@ export default function Footer() {
               <FaLinkedin />
             </a>
           </div>
-          {/* Newsletter section can be uncommented if needed */}
-          {/* <h2 className="text-lg font-bold mb-4">
-            Subscribe to Our Newsletter
-          </h2> */}
-          {/* <form className="flex flex-col space-y-2">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="px-4 py-2 rounded-md text-black"
-            />
-            <button className="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-md">
-              Subscribe
-            </button>
-          </form> */}
+          
         </div>
       </div>
-      {/* Footer Bottom */}
       <div className="text-center mt-10 border-t border-gray-400 pt-6">
         <p>&copy; 2024 Real Estate Company. All Rights Reserved.</p>
       </div>

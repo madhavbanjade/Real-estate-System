@@ -8,35 +8,28 @@ import {
 } from "../redux/user/userSlice";
 
 const SignIn = () => {
-  //this helps to track  the changes.
   const [formData, setFormData] = useState({});
   const { loading, error } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
     setFormData({
-      ...formData, // this tracks the data enter in the form and stay there and keep tracking..
+      ...formData,
       [e.target.id]: e.target.value,
     });
   };
-  // console.log(formData);
 
-  //This method is for hitting the api  of backend from frontend
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //By using the fetch you do not need to whole link api
-    //Go through vite.config.js
     try {
       dispatch(signInStart());
-      const res = await fetch("/api/auth/sign-in", {
+      const res = await fetch(`${baseUrl}/sign-in`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          //The type of data being sent..
         },
-        body: JSON.stringify(formData), //The actual data being sent in json format.
+        body: JSON.stringify(formData),
       });
-      // console.log(formData);
       const data = await res.json();
       console.log(data);
       if (data.success === false) {
@@ -72,8 +65,8 @@ const SignIn = () => {
           className="bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95"
         >
           {loading ? "Loading...." : "Sign In"}
-        </button>
-``      </form>
+        </button>{" "}
+      </form>
       <div className="flex gap-2 mt-3 ">
         <p>Don't have an account?</p>
         <Link to={"/sign-up"}>

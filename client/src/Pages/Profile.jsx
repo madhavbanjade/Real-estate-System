@@ -20,7 +20,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Swal from "sweetalert2"; // Import SweetAlert2
+import Swal from "sweetalert2"; 
 
 export default function Profile() {
   const fileRef = useRef(null);
@@ -73,7 +73,7 @@ export default function Profile() {
     e.preventDefault();
     try {
       dispatch(updateUserStart());
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`${baseUrl}/update/${currentUser._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,7 +110,7 @@ export default function Profile() {
     if (result.isConfirmed) {
       try {
         dispatch(deleteUserStart());
-        const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        const res = await fetch(`${baseUrl}/delete/${currentUser._id}`, {
           method: "DELETE",
         });
         const data = await res.json();
@@ -119,10 +119,10 @@ export default function Profile() {
           return;
         }
         dispatch(deleteUserSuccess(data));
-        Swal.fire("Deleted!", "Your account has been deleted.", "success"); // Show success message
+        Swal.fire("Deleted!", "Your account has been deleted.", "success"); 
       } catch (error) {
         dispatch(deleteUserFailure(error.message));
-        Swal.fire("Error!", "Failed to delete your account.", "error"); // Show error message
+        Swal.fire("Error!", "Failed to delete your account.", "error"); 
       }
     }
   };
@@ -145,7 +145,7 @@ export default function Profile() {
   const handleShowListings = async () => {
     try {
       setShowListingsError(false);
-      const res = await fetch(`/api/user/listings/${currentUser._id}`);
+      const res = await fetch(`${baseUrl}/listings/${currentUser._id}`);
       const data = await res.json();
       if (data.success === false) {
         setShowListingsError(true);
@@ -171,7 +171,7 @@ export default function Profile() {
 
     if (result.isConfirmed) {
       try {
-        const res = await fetch(`/api/listing/delete/${listingId}`, {
+        const res = await fetch(`${baseUrl}/delete/${listingId}`, {
           method: "DELETE",
         });
         const data = await res.json();
@@ -183,10 +183,10 @@ export default function Profile() {
         setUserListings((prev) =>
           prev.filter((listing) => listing._id !== listingId)
         );
-        Swal.fire("Deleted!", "Your listing has been deleted.", "success"); // Show success message
+        Swal.fire("Deleted!", "Your listing has been deleted.", "success"); 
       } catch (error) {
         console.log(error.message);
-        Swal.fire("Error!", "Failed to delete the listing.", "error"); // Show error message
+        Swal.fire("Error!", "Failed to delete the listing.", "error"); 
       }
     }
   };

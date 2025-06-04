@@ -8,8 +8,8 @@ import {
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer and toast
-import "react-toastify/dist/ReactToastify.css"; // Import styles
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
@@ -51,7 +51,7 @@ export default function CreateListing() {
           });
           setImageUploadError(false);
           setUploading(false);
-          toast.success("Images uploaded successfully!"); // Show success toast
+          toast.success("Images uploaded successfully!");
         })
         .catch((err) => {
           setImageUploadError("Image upload failed (2 mb max per image)");
@@ -134,7 +134,7 @@ export default function CreateListing() {
         return setError("Discount price must be less than regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/listing/create", {
+      const res = await fetch(`${baseUrl}/create`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -149,7 +149,7 @@ export default function CreateListing() {
       if (data.success === false) {
         setError(data.message);
       } else {
-        toast.success("Listing created successfully!"); // Show success toast after successful creation
+        toast.success("Listing created successfully!");
       }
       navigate(`/listing/${data._id}`);
     } catch (error) {
@@ -374,7 +374,7 @@ export default function CreateListing() {
           {error && <p className="text-red-700 text-sm">{error}</p>}
         </div>
       </form>
-      <ToastContainer /> {/* Include ToastContainer for displaying toasts */}
+      <ToastContainer />
     </main>
   );
 }

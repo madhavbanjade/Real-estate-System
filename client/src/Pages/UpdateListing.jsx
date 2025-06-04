@@ -33,13 +33,10 @@ export default function UpdateListing() {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // console.log(files);
-  //   console.log(formData);
-
   useEffect(() => {
     const fetchListing = async () => {
       const listingId = params.listingId;
-      const res = await fetch(`/api/listing/get/${listingId}`);
+      const res = await fetch(`${baseUrl}/get/${listingId}`);
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
@@ -148,7 +145,7 @@ export default function UpdateListing() {
         return setError("Discount price must be less then regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch(`/api/listing/update/${params.listingId}`, {
+      const res = await fetch(`${baseUrl}/update/${params.listingId}`, {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -359,7 +356,6 @@ export default function UpdateListing() {
           </p>
           {formData.imageUrls.length > 0 &&
             formData.imageUrls.map((url, index) => {
-              //map should be return..
               return (
                 <div
                   key={url}
